@@ -45,8 +45,11 @@
   <ItemGroup>
     <Compile Include="Array\DynamicArray1.cs" />
     <Compile Include="Array\DynamicArray2.cs" />
+    <Compile Include="LinkedList\DoublyLinkedList.cs" />
+    <Compile Include="LinkedList\DoublyLinkedListNode.cs" />
+    <Compile Include="LinkedList\Example.cs" />
     <Compile Include="LinkedList\SinglyLinkedListNode.cs" />
-    <Compile Include="LinkedList\SinglyLinkedList1.cs" />
+    <Compile Include="LinkedList\SinglyLinkedList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,7 +60,7 @@
   <ItemGroup>
     <Content Include="CopyBookMemos\1.자료구조.txt" />
     <Content Include="CopyBookMemos\2.배열%28Array%29.txt" />
-    <Content Include="CopyBookMemos\3. 연결 리스트%28Linked List%29.txt" />
+    <Content Include="CopyBookMemos\3.연결 리스트%28Linked List%29.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

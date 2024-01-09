@@ -2,7 +2,7 @@
 
 namespace DataStructure.LinkedList
 {
-    public class SinglyLinkedList1<T>
+    public class SinglyLinkedList<T>
     {
         private SinglyLinkedListNode<T> head;
 
@@ -48,7 +48,7 @@ namespace DataStructure.LinkedList
             }
             else
             {
-                var current = head;
+                SinglyLinkedListNode<T> current = head;
 
                 while (current != null && current.Next != removeNode)
                 {
@@ -65,7 +65,7 @@ namespace DataStructure.LinkedList
 
         public SinglyLinkedListNode<T> GetNode(int index)
         {
-            var current = head;
+            SinglyLinkedListNode<T> current = head;
             for (int i = 0; i < index && current != null; i++)
             {
                 current = current.Next;
@@ -78,7 +78,7 @@ namespace DataStructure.LinkedList
         {
             int cnt = 0;
 
-            var current = head;
+            SinglyLinkedListNode<T> current = head;
             while (current != null)
             {
                 cnt++;
