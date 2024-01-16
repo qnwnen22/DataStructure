@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Array\DynamicArray1.cs" />
     <Compile Include="Array\DynamicArray2.cs" />
+    <Compile Include="LinkedList\CricularLinkedList.cs" />
     <Compile Include="LinkedList\DoublyLinkedList.cs" />
     <Compile Include="LinkedList\DoublyLinkedListNode.cs" />
     <Compile Include="LinkedList\Example.cs" />

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DataStructure.LinkedList
 {
@@ -64,6 +66,54 @@ namespace DataStructure.LinkedList
             {
                 Console.WriteLine(node.Data);
                 node = node.Prev;
+            }
+        }
+
+        public static void Example3()
+        {
+            var list = new CricularLinkedList<int>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                list.Add(new DoublyLinkedListNode<int>(i));
+            }
+
+            var node = list.GetNode(2);
+            list.Remove(node);
+
+            node = list.GetNode(1);
+            var newNode = new DoublyLinkedListNode<int>(100);
+            list.AddAfter(node, newNode);
+
+            int count = list.Count();
+
+            node = list.GetNode(0);
+            for (int i = 0; i < count * 2; i++)
+            {
+                Console.WriteLine(node.Data);
+                node = node.Next;
+            }
+        }
+
+        public static void Example4()
+        {
+            var list = new LinkedList<string>();
+            list.AddLast("Appple");
+            list.AddLast("Banana");
+            list.AddLast("Lemon");
+
+            var node = list.Find("Banana");
+            var newNode = new LinkedListNode<string>("Grape");
+
+            list.AddAfter(node, newNode);
+
+            list.ToList().ForEach(x => Console.WriteLine(x));
+
+            list.Remove("Grape");
+
+            foreach (string item in list)
+            {
+                Console.WriteLine(item);
             }
         }
     }
