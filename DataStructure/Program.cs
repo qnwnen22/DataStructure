@@ -8,7 +8,7 @@ namespace DataStructure
         {
             //LinkedList.Example.Example1();
             //LinkedList.Example.Example2();
-            LinkedList.Example.Example3();
+            //LinkedList.Example.Example3();
         }
     }
 }
