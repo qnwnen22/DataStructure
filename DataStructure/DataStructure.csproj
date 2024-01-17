@@ -58,16 +58,23 @@
     <Compile Include="Queue\QueueUsingCircularArray.cs" />
     <Compile Include="Queue\QueueUsingCircularArray2.cs" />
     <Compile Include="Queue\QueueUsingCircularArray3.cs" />
+    <Compile Include="Stack\Calculator.cs" />
+    <Compile Include="Stack\Example.cs" />
+    <Compile Include="Stack\StackUsingArray.cs" />
+    <Compile Include="Stack\StackUsingLinkedList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="CopyBookMemos\1.자료구조.txt" />
     <Content Include="CopyBookMemos\2.배열%28Array%29.txt" />
     <Content Include="CopyBookMemos\3.연결 리스트%28Linked List%29.txt" />
     <Content Include="CopyBookMemos\4.큐%28Queue%29.txt" />
+    <Content Include="CopyBookMemos\5.스택%28Stack%29.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
