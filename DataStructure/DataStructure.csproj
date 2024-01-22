@@ -78,6 +78,8 @@
     <Content Include="CopyBookMemos\3.연결 리스트%28Linked List%29.txt" />
     <Content Include="CopyBookMemos\4.큐%28Queue%29.txt" />
     <Content Include="CopyBookMemos\5.스택%28Stack%29.txt" />
+    <Content Include="CopyBookMemos\6.트리%28Tree%29.txt" />
+    <Content Include="CopyBookMemos\7.이진 트티%28Binary Tree%29.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
