@@ -62,13 +62,16 @@
     <Compile Include="Stack\Example.cs" />
     <Compile Include="Stack\StackUsingArray.cs" />
     <Compile Include="Stack\StackUsingLinkedList.cs" />
+    <Compile Include="Tree\Example.cs" />
+    <Compile Include="Tree\LCRSNode.cs" />
+    <Compile Include="Tree\LCRSTree.cs" />
+    <Compile Include="Tree\StaticTreeNode.cs" />
+    <Compile Include="Tree\TreeNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="CopyBookMemos\1.자료구조.txt" />
     <Content Include="CopyBookMemos\2.배열%28Array%29.txt" />
