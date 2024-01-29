@@ -14,7 +14,9 @@ namespace DataStructure
             //Tree.Example.Example2();
             //Tree.Example.Example3();
 
-            BinaryTree.Example.Example1();
+            //BinaryTree.Example.Example1();
+            //BinaryTree.Example.Example2();
+            BinaryTree.Example.Example3();
         }
     }
 }

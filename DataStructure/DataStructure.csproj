@@ -49,6 +49,7 @@
     <Compile Include="BinaryTree\BinaryTreeNode.cs" />
     <Compile Include="BinaryTree\BinaryTreeUsingArray.cs" />
     <Compile Include="BinaryTree\Example.cs" />
+    <Compile Include="BinaryTree\ExpressionTree.cs" />
     <Compile Include="LinkedList\CricularLinkedList.cs" />
     <Compile Include="LinkedList\DoublyLinkedList.cs" />
     <Compile Include="LinkedList\DoublyLinkedListNode.cs" />

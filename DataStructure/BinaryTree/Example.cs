@@ -1,4 +1,6 @@
-﻿namespace DataStructure.BinaryTree
+﻿using System;
+
+namespace DataStructure.BinaryTree
 {
     public class Example
     {
@@ -29,6 +31,25 @@
 
             data = bt.GetLeft(2);
             System.Console.WriteLine(data); ;
+        }
+
+        public static void Example3()
+        {
+            var postfix = "10 4 / 3 5 + +".Split(' ');
+
+            var et = new ExpressionTree();
+            et.Build(postfix);
+
+            Console.Write("Inorder: ");
+            et.Inorder(et.Root);
+            Console.WriteLine();
+
+            Console.Write("Postorder: ");
+            et.Postorder(et.Root);
+            Console.WriteLine();
+
+            var result = et.Evaluate(et.Root);
+            Console.WriteLine($"Result: {result}");
         }
     }
 }

@@ -79,5 +79,185 @@ namespace DataStructure.BinaryTree
                 }
             }
         }
+
+        public void InorderIterative()
+        {
+            var stack = new Stack<BinaryTreeNode<T>>();
+            var node = Root;
+
+            while (node != null)
+            {
+                stack.Push(node);
+                node = node.Left;
+            }
+
+            while (stack.Count > 0)
+            {
+                node = stack.Pop();
+
+                Console.WriteLine(node.Data);
+
+                if (node.Right != null)
+                {
+                    node = node.Right;
+
+                    while (node != null)
+                    {
+                        stack.Push(node);
+                        node = node.Left;
+                    }
+                }
+            }
+        }
+
+        public void InorderIterative2()
+        {
+            var stack = new Stack<BinaryTreeNode<T>>();
+            var node = Root;
+
+            while (node != null || stack.Count > 0)
+            {
+                while (node != null)
+                {
+                    stack.Push(node);
+                    node = node.Left;
+                }
+
+                node = stack.Pop();
+
+                Console.WriteLine(node.Data);
+
+                node = node.Right;
+            }
+        }
+
+        public void PostorderIterrative()
+        {
+            var stack = new Stack<BinaryTreeNode<T>>();
+            var node = Root;
+
+            while (node != null)
+            {
+                if (node.Right != null)
+                {
+                    stack.Push(node.Right);
+                }
+                stack.Push(node);
+                node = node.Left;
+            }
+
+            while (stack.Count > 0)
+            {
+                node = stack.Pop();
+
+                if (node.Right != null && stack.Count > 0 && node.Right == stack.Peek())
+                {
+                    var right = stack.Pop();
+                    stack.Push(node);
+                    node = right;
+
+                    while (node != null)
+                    {
+                        if (node.Right != null)
+                        {
+                            stack.Push(node.Right);
+                        }
+
+                        stack.Push(node);
+                        node = node.Left;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(node.Data);
+                }
+            }
+        }
+
+        public void PostorderIterrative2()
+        {
+            var stack = new Stack<BinaryTreeNode<T>>();
+            var node = Root;
+
+            while (node != null || stack.Count > 0)
+            {
+                while (node != null)
+                {
+                    if (node.Right != null)
+                    {
+                        stack.Push(node.Right);
+                    }
+                    stack.Push(node);
+                    node = node.Left;
+                }
+
+                node = stack.Pop();
+
+                if (node.Right != null && stack.Count > 0 && node.Right == stack.Peek())
+                {
+                    var right = stack.Pop();
+                    stack.Push(node);
+                    node = right;
+                }
+                else
+                {
+                    Console.WriteLine(node.Data);
+                    node = null;
+                }
+            }
+        }
+
+        public void LevelorderTraversal()
+        {
+            var q = new Queue<BinaryTreeNode<T>>();
+
+            q.Enqueue(this.Root);
+
+            while (q.Count > 0)
+            {
+                var node = q.Dequeue();
+
+                Console.WriteLine("{0}", node.Data);
+
+                if (node.Left != null)
+                {
+                    q.Enqueue(node.Left);
+                }
+                if (node.Right != null)
+                {
+                    q.Enqueue(node.Right);
+                }
+            }
+        }
+
+        public void LevelorderNewLine()
+        {
+            var q = new Queue<BinaryTreeNode<T>>();
+
+            q.Enqueue(this.Root);
+            q.Enqueue(null);
+
+            while (q.Count > 0)
+            {
+                var node = q.Dequeue();
+                if (node == null)
+                {
+                    Console.WriteLine();
+                    if (q.Count > 0) q.Enqueue(null);
+                    continue;
+                }
+
+                Console.WriteLine("{0}", node.Data);
+
+                if (node.Left != null)
+                {
+                    q.Enqueue(node.Left);
+                }
+                if (node.Right != null)
+                {
+                    q.Enqueue(node.Right);
+                }
+            }
+        }
     }
 }
