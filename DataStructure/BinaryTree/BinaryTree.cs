@@ -259,5 +259,39 @@ namespace DataStructure.BinaryTree
                 }
             }
         }
+
+        public int GetMaxDeplth(BinaryTreeNode<T> node)
+        {
+            if (node == null) return -1;
+
+            return 1 + Math.Max(GetMaxDeplth(node.Left), GetMaxDeplth(node.Right));
+        }
+
+        public int Count(BinaryTreeNode<T> node)
+        {
+            if (node == null) return 0;
+
+            return 1 + Count(node.Left) + Count(node.Right);
+        }
+
+        public bool FindTreePath(BinaryTreeNode<T> root, BinaryTreeNode<T> target, List<BinaryTreeNode<T>> path)
+        {
+            if (root == null) return false;
+
+            path.Add(root);
+
+            if (root == target)
+            {
+                return true;
+            }
+            
+            if (FindTreePath(root.Left, target, path) || FindTreePath(root.Right, target, path))
+            {
+                return true;
+            }
+
+            path.RemoveAt(path.Count - 1);
+            return false;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DataStructure.BinaryTree
 {
@@ -51,5 +52,14 @@ namespace DataStructure.BinaryTree
             var result = et.Evaluate(et.Root);
             Console.WriteLine($"Result: {result}");
         }
+
+        public static void Example4()
+        {
+            var path1 = new List<BinaryTreeNode<char>>();
+            var path2 = new List<BinaryTreeNode<char>>();
+
+            
+        }
+
     }
 }
