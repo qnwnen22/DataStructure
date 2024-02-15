@@ -76,6 +76,10 @@
     <Compile Include="Tree\LCRSTree.cs" />
     <Compile Include="Tree\StaticTreeNode.cs" />
     <Compile Include="Tree\TreeNode.cs" />
+    <Compile Include="Trie\Example.cs" />
+    <Compile Include="Trie\Node.cs" />
+    <Compile Include="Trie\SimpleTrie.cs" />
+    <Compile Include="Trie\Trie.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -90,6 +94,7 @@
     <Content Include="CopyBookMemos\6.트리%28Tree%29.txt" />
     <Content Include="CopyBookMemos\7.이진 트티%28Binary Tree%29.txt" />
     <Content Include="CopyBookMemos\8.이진 탐색 트리%28Binary Search Tree%29.txt" />
+    <Content Include="CopyBookMemos\10.트라이%28Trie%29.txt" />
     <Content Include="CopyBookMemos\9.힙%28Heap%29.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
