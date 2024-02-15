@@ -58,8 +58,9 @@ namespace DataStructure.BinaryTree
             var path1 = new List<BinaryTreeNode<char>>();
             var path2 = new List<BinaryTreeNode<char>>();
 
-            
+
         }
+
 
     }
 }

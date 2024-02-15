@@ -284,7 +284,7 @@ namespace DataStructure.BinaryTree
             {
                 return true;
             }
-            
+
             if (FindTreePath(root.Left, target, path) || FindTreePath(root.Right, target, path))
             {
                 return true;
@@ -292,6 +292,28 @@ namespace DataStructure.BinaryTree
 
             path.RemoveAt(path.Count - 1);
             return false;
+        }
+
+        public BinaryTreeNode<T> LeastCommonAncestor(BinaryTreeNode<T> root, BinaryTreeNode<T> a, BinaryTreeNode<T> b)
+        {
+            if (root == null) return null;
+
+            if (root == a || root == b)
+            {
+                return root;
+            }
+
+            BinaryTreeNode<T> left = LeastCommonAncestor(root.Left, a, b);
+            BinaryTreeNode<T> right = LeastCommonAncestor(root.Right, a, b);
+
+            if (left != null && right != null)
+            {
+                return root;
+            }
+            else
+            {
+                return (left != null) ? left : right;
+            }
         }
     }
 }
