@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Array\DynamicArray1.cs" />
     <Compile Include="Array\DynamicArray2.cs" />
+    <Compile Include="BinarySearchTree\BST.cs" />
+    <Compile Include="BinarySearchTree\Example.cs" />
     <Compile Include="BinaryTree\BinaryTree.cs" />
     <Compile Include="BinaryTree\BinaryTreeNode.cs" />
     <Compile Include="BinaryTree\BinaryTreeUsingArray.cs" />
