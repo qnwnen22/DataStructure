@@ -19,7 +19,10 @@ namespace DataStructure
             //BinaryTree.Example.Example3();
 
             //BinarySearchTree.Example.Example1();
-            BinarySearchTree.Example.Example3();
+            //BinarySearchTree.Example.Example2();
+            //BinarySearchTree.Example.Example3();
+
+            Heap.Exmaple.Example1();
         }
     }
 }

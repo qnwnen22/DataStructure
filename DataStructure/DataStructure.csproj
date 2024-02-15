@@ -52,6 +52,8 @@
     <Compile Include="BinaryTree\BinaryTreeUsingArray.cs" />
     <Compile Include="BinaryTree\Example.cs" />
     <Compile Include="BinaryTree\ExpressionTree.cs" />
+    <Compile Include="Heap\Exmaple.cs" />
+    <Compile Include="Heap\MaxHeap.cs" />
     <Compile Include="LinkedList\CricularLinkedList.cs" />
     <Compile Include="LinkedList\DoublyLinkedList.cs" />
     <Compile Include="LinkedList\DoublyLinkedListNode.cs" />
@@ -88,6 +90,7 @@
     <Content Include="CopyBookMemos\6.트리%28Tree%29.txt" />
     <Content Include="CopyBookMemos\7.이진 트티%28Binary Tree%29.txt" />
     <Content Include="CopyBookMemos\8.이진 탐색 트리%28Binary Search Tree%29.txt" />
+    <Content Include="CopyBookMemos\9.힙%28Heap%29.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
