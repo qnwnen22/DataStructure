@@ -22,7 +22,11 @@ namespace DataStructure
             //BinarySearchTree.Example.Example2();
             //BinarySearchTree.Example.Example3();
 
-            Heap.Exmaple.Example1();
+            //Heap.Exmaple.Example1();
+
+            //Trie.Example.Example1();
+            //Trie.Example.Example2();
+            Trie.Example.Example3();
         }
     }
 }

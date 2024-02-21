@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace DataStructure.Trie
 {
-    public class Trie
+    public class Trie2
     {
         private class Node
         {
             public Dictionary<char, Node> Children { get; private set; }
-            public bool EndOfWord { get; set; }
+            // public bool EndOfWord { get; set; }
+            public string Word { get; set; }
             public Node()
             {
                 Children = new Dictionary<char, Node>();
@@ -34,26 +35,9 @@ namespace DataStructure.Trie
                 node = node.Children[ch];
             }
 
-            node.EndOfWord = true;
+            // 단어를 노드에 저장
+            node.Word = str;
         }
-
-        public bool Find(string str)
-        {
-            Node node = root;
-
-            foreach (char ch in str)
-            {
-                if (!node.Children.ContainsKey(ch))
-                {
-                    return false;
-                }
-
-                node = node.Children[ch];
-            }
-
-            return node != null && node.EndOfWord;
-        }
-
 
         public List<string> AutoComplete(string prefix)
         {
@@ -70,25 +54,25 @@ namespace DataStructure.Trie
 
             // Prefix 노드부터 전위순회
             var results = new List<string>();
-            Preorder(node, prefix, results);
+            Preorder(node, results);
 
             return results;
         }
 
-        private void Preorder(Node node, string nodeStr, List<string> results)
+        private void Preorder(Node node, List<string> results)
         {
             if (node == null) return;
 
             // 단어끝이면 리스트에 추가
-            if (node.EndOfWord)
+            if (node.Word != null)
             {
-                results.Add(nodeStr);
+                results.Add(node.Word);
             }
 
             // Children들을 Preorder 재귀 호출
             foreach (char key in node.Children.Keys)
             {
-                Preorder(node.Children[key], nodeStr + key, results);
+                Preorder(node.Children[key], results);
             }
         }
     }

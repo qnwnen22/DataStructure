@@ -79,6 +79,7 @@
     <Compile Include="Trie\Example.cs" />
     <Compile Include="Trie\Node.cs" />
     <Compile Include="Trie\SimpleTrie.cs" />
+    <Compile Include="Trie\Trie2.cs" />
     <Compile Include="Trie\Trie.cs" />
   </ItemGroup>
   <ItemGroup>
