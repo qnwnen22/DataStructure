@@ -52,6 +52,8 @@
     <Compile Include="BinaryTree\BinaryTreeUsingArray.cs" />
     <Compile Include="BinaryTree\Example.cs" />
     <Compile Include="BinaryTree\ExpressionTree.cs" />
+    <Compile Include="HashTable\Example.cs" />
+    <Compile Include="HashTable\HashTable.cs" />
     <Compile Include="Heap\Exmaple.cs" />
     <Compile Include="Heap\MaxHeap.cs" />
     <Compile Include="LinkedList\CricularLinkedList.cs" />
