@@ -65,5 +65,138 @@ namespace DataStructure.Graph
                 }
             }
         }
+
+
+        public void DFS()
+        {
+            // 방문 여부를 표시하는 방문 테이블
+            var visited = new HashSet<Node1<T>>();
+
+            // Disconnected Graph 를 위해
+            // 방문하지 않은 노드를 모두 체크
+            foreach (var node in nodes)
+            {
+                if (!visited.Contains(node))
+                {
+                    DFSRecursive(node, visited);
+                    Console.WriteLine();
+                }
+            }
+        }
+
+        private void DFSRecursive(Node1<T> node, HashSet<Node1<T>> visited)
+        {
+            // 노드 방문
+            Console.Write("{0} ", node.Data);
+            visited.Add(node);
+
+            foreach (var adjNode in node.Neighbors)
+            {
+                // 이미 방문하지 않은 인접 노드에 대해서만
+                if (!visited.Contains(adjNode))
+                {
+                    // 재귀호출
+                    DFSRecursive(adjNode, visited);
+                }
+            }
+        }
+
+
+        public void DFSIterative()
+        {
+            var visited = new HashSet<Node1<T>>();
+
+            // Disconnected Graph 를 위해
+            // 방문하지 않은 노드들 모두 체크
+            foreach (var node in nodes)
+            {
+                if (!visited.Contains(node))
+                {
+                    DFSUsingStack(node, visited);
+                }
+            }
+        }
+
+        private void DFSUsingStack(Node1<T> node, HashSet<Node1<T>> visited)
+        {
+            var stack = new Stack<Node1<T>>();
+            stack.Push(node);
+
+            while (stack.Count > 0)
+            {
+                var vertex = stack.Pop();
+                if (!visited.Contains(vertex))
+                {
+                    Console.WriteLine("{0} ", vertex.Data);
+                    visited.Add(vertex);
+                }
+
+                // 표현(A)
+                foreach (var adjNode in vertex.Neighbors)
+                {
+                    if (!visited.Contains(adjNode))
+                    {
+                        stack.Push(adjNode);
+                    }
+                }
+
+                // 표현(B)
+                //int cnt = vertex.Neighbors.Count;
+                //for (int i = cnt - 1; i >= 0; i--)
+                //{
+                //    if (!visited.Contains(vertex.Neighbors[i]))
+                //    {
+                //        stack.Push(vertex.Neighbors[i]);
+                //    }
+                //}
+            }
+            Console.WriteLine();
+        }
+
+        public void BFS()
+        {
+            var visited = new HashSet<Node1<T>>();
+
+            // Disconnected Graph 를 위해
+            // 방문하지 않은 노드를 모두 체크
+            foreach (Node1<T> node in nodes)
+            {
+                if (!visited.Contains(node))
+                {
+                    BFS(node, visited);
+                }
+            }
+        }
+
+        private void BFS(Node1<T> node, HashSet<Node1<T>> visited)
+        {
+            var q = new Queue<Node1<T>>();
+            q.Enqueue(node);
+
+            while (q.Count > 0)
+            {
+                var vertex = q.Dequeue();
+
+                // 노드 방문
+                if (!visited.Contains(vertex))
+                {
+                    Console.Write("{0} ", vertex.Data);
+                    visited.Add(vertex);
+                }
+
+                foreach (var adjNode in vertex.Neighbors)
+                {
+                    // 이미 방문하지 않은 인접 노드에 대해
+                    if (!visited.Contains(adjNode))
+                    {
+                        // Queue에 추가
+                        q.Enqueue(adjNode);
+                    }
+                }
+            }
+
+            // BFS 실행 결과 : 
+            // A B D E C F G X Y
+        }
     }
 }

@@ -29,7 +29,11 @@ namespace DataStructure
             //Trie.Example.Example3();
 
             //Graph.Example.Example1();
-            Graph.Example.Example2();
+            //Graph.Example.Example2();
+            //Graph.Example.Example3();
+            
+            //Graph.Example.Example4();
+            Graph.Example.Example5();
         }
     }
 }
