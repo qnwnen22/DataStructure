@@ -198,5 +198,64 @@ namespace DataStructure.Graph
             // BFS 실행 결과 : 
             // A B D E C F G X Y
         }
+
+        private void TopoSort(Node1<T> node, HashSet<Node1<T>> visited, Stack<Node1<T>> result)
+        {
+            foreach (var nbr in node.Neighbors)
+            {
+                if (!visited.Contains(nbr))
+                {
+                    TopoSort(nbr, visited, result);
+                }
+            }
+
+            // (A) 스택에 저장하는 경우
+            result.Push(node);
+            // (B) 연결리스트에 저장하는 경우
+            // result.AddFirst(node);
+            visited.Add(node);
+        }
+
+        private void TopoSort(Node1<T> node, HashSet<Node1<T>> visited, LinkedList<Node1<T>> result)
+        {
+            foreach (var nbr in node.Neighbors)
+            {
+                if (!visited.Contains(nbr))
+                {
+                    TopoSort(nbr, visited, result);
+                }
+            }
+
+            // (A) 스택에 저장하는 경우
+            // result.Push(node);
+            // (B) 연결리스트에 저장하는 경우
+            result.AddFirst(node);
+            visited.Add(node);
+        }
+
+        public Stack<Node1<T>> TopologicalSort()
+        {
+            var visited = new HashSet<Node1<T>>();
+            // (A)스택에 저장하는 경우
+            var result = new Stack<Node1<T>>();
+            // (B) 연결리스트에 저장하는 경우
+            // var result = new LinkedList<Node1<T>>();
+
+            // 모든 노드에 대해
+            // 방문하지 않은 경우 위상정렬 수행
+            foreach (Node1<T> vertex in nodes)
+            {
+                if (!visited.Contains(vertex))
+                {
+                    TopoSort(vertex, visited, result);
+                }
+            }
+
+            return result;
+        }
+
+
+
+       
     }
 }

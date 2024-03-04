@@ -1,4 +1,7 @@
-﻿namespace DataStructure.Graph
+﻿using System;
+using System.Collections.Generic;
+
+namespace DataStructure.Graph
 {
     public class Example
     {
@@ -95,6 +98,126 @@
             // X Y 
         }
 
-        
+        public static void Example6()
+        {
+            var gr = new Graph<string>();
+            var A = gr.AddVertex("A");
+            var B = gr.AddVertex("B");
+            var C = gr.AddVertex("C");
+            var D = gr.AddVertex("D");
+            var E = gr.AddVertex("E");
+            var F = gr.AddVertex("F");
+
+            gr.AddEdge(A, B);
+            gr.AddEdge(A, D);
+            gr.AddEdge(B, C);
+            gr.AddEdge(C, D);
+            gr.AddEdge(C, E);
+            gr.AddEdge(C, F);
+            gr.AddEdge(D, F);
+
+            Stack<Node1<string>> result = gr.TopologicalSort();
+            foreach (Node1<string> node in result)
+            {
+                Console.Write("{0} ", node.Data);
+            }
+
+            Console.WriteLine();
+            // 결과 : A B C D E F
+        }
+
+        public static void Example7()
+        {
+            string[] verices = { "A", "B", "C", "D", "E", "F" };
+            var g = new GraphV2(verices);
+            g.AddEdge("A", "B", 2);
+            g.AddEdge("A", "C", 3);
+            g.AddEdge("B", "C", 5);
+            g.AddEdge("B", "D", 3);
+            g.AddEdge("B", "E", 4);
+            g.AddEdge("C", "E", 4);
+            g.AddEdge("D", "E", 2);
+            g.AddEdge("D", "F", 3);
+            g.AddEdge("E", "F", 5);
+
+            var mst = g.KruskalMST();
+            foreach (var m in mst)
+            {
+                Console.WriteLine($"{m.From}-{m.To} {m.Weight}");
+            }
+
+            // (결과출력)
+            //  A-B 2
+            //  E-D 2
+            //  A-C 3
+            //  F-D 3
+            //  B-D 3
+        }
+
+        public static void Example8()
+        {
+            var g = new GraphV3();
+            g.AddVertex("A");
+            g.AddVertex("B");
+            g.AddVertex("C");
+            g.AddVertex("D");
+            g.AddVertex("E");
+            g.AddVertex("F");
+
+            g.AddEdge("A", "B", 2);
+            g.AddEdge("A", "C", 3);
+            g.AddEdge("B", "C", 5);
+            g.AddEdge("B", "D", 3);
+            g.AddEdge("B", "E", 4);
+            g.AddEdge("C", "E", 4);
+            g.AddEdge("D", "E", 2);
+            g.AddEdge("D", "F", 3);
+            g.AddEdge("E", "F", 5);
+
+            g.PrimMST();
+
+            // (결과출력)
+            // A - B 2
+            // A - C 3
+            // B - D 3
+            // D - E 2
+            // D - F 3
+        }
+
+        public static void Example9()
+        {
+            var g = new GraphV3();
+            var a = g.AddVertex("0");
+            g.AddVertex("1");
+            g.AddVertex("2");
+            g.AddVertex("3");
+            g.AddVertex("4");
+            g.AddVertex("5");
+            g.AddVertex("6");
+            g.AddEdge("0", "1", 7);
+            g.AddEdge("0", "4", 3);
+            g.AddEdge("0", "5", 10);
+            g.AddEdge("1", "5", 6);
+            g.AddEdge("1", "2", 4);
+            g.AddEdge("1", "3", 10);
+            g.AddEdge("2", "3", 2);
+            g.AddEdge("3", "5", 9);
+            g.AddEdge("4", "1", 2);
+            g.AddEdge("4", "3", 11);
+            g.AddEdge("4", "6", 5);
+            g.AddEdge("6", "3", 4);
+
+            g.Dijkstra(a);
+
+            // (결과출력)
+            // 정점: 가중치 / 이전노드
+            // 0   : 0 / 0
+            // 1   : 5 / 4
+            // 2   : 9 / 1
+            // 3   : 11 / 2
+            // 4   : 3 / 0
+            // 5   : 10 / 0
+            // 6   : 8 / 4
+        }
     }
 }

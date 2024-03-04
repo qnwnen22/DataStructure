@@ -33,7 +33,11 @@ namespace DataStructure
             //Graph.Example.Example3();
             
             //Graph.Example.Example4();
-            Graph.Example.Example5();
+            // Graph.Example.Example5();
+            //Graph.Example.Example6();
+            //Graph.Example.Example7();
+            //Graph.Example.Example8();
+            Graph.Example.Example9();
         }
     }
 }
