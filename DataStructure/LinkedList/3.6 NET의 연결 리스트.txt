@@ -1,0 +1,10 @@
+﻿3.6 NET의 연결 리스트
+
+닷넷에는 연결 리스트를 지원하는 클래스로 LinkedList<T>가 있다.
+이 LinkedList<T> 클래스는 이중 연결 리스트(Doubly Linked List)로 구현되어 있으며, 리스트 노드는 LinkedListNode<T> 클래스를 사용한다.
+LinkedList<T>는 개발자가 임의의 타입(T)을 지정할 수 있는 Generic 타입의 이중 연결 리스트이다.
+이 LinkedList<T> 클래스는 여러 메서드들을 제공하는데, 예를 들어 노드를 추가하기 위한 메서드로서 AddFirst, AddLast, AddBefore, AddAfter 등의 다양한 메서드가 있어 처음 또는 끝, 혹은 특정 노드의 앞, 뒤에 새 노드를 추가할 수 있다.
+
+아래 코드는 LinkedList<T>의 몇 개의 노드를 추가하고 검색, 출력해 보는 예제이다.
+
+*LinkedList.Example.cs Example4() 참조

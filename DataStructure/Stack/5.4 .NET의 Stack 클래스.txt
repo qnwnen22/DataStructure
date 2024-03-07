@@ -1,0 +1,26 @@
+﻿5.4 .NET의 Stack 클래스
+
+닷넷에서 스택을 지원하는 클래스로는 (1)Stack 요소들이 object 타입인 System.Collections.Stack 클래스와 (2) 개발자가 Stack 생성시 요소들의 타입을 결정할 수 있는 제네릭(Generic) 타입의 System.Collections.Generic.Stack<T> 클래스, 그리고 (3) 멀티쓰레딩 환경에서 스택을 간편하게 사용할 수 있도록 .NET 4.0부터 제공된 ConcurrentStack<T> 클래스가 있다.
+
+닷넷의 Stack<T> 클래스와 Stack 클래스는 요소타입을 지정할 수 있는 제네릭인가 아닌가하는 차이가 있으며, 두 클래스는 닷넷의 큐 클래스와 마찬가지로 내부적으로 원형 동적 배열로 구현되어 있다.
+즉, 이들 클래스는 원형 배열을 사용하여 스택을 구현하였는데, 스택이 가득 찼을 때 2배의 원형 배열을 만들어 스택을 확장하는 기능을 가지고 있다.
+
+아래 예제는 Stack<T>를 사용하여 double형 Stack을 만들고 데이타를 넣고 빼는 샘플코드이다.
+
+{
+	Stack<double> s = new Stack<double>();
+	s.Push(1.25d);
+	s.Push(2.50d);
+	s.Push(3.75d);
+	
+	double val = s.Pop(); // 3.75
+	Console.WriteLine(val);
+}
+
+.NET 4.0부터 제공되는 ConcurrentStack<T> 클래스는 System.Collections.Concurrent 네임스페이스에 있는 클래스로서 이전에 소개한 ConcurrentQueue<T> 와 비슷하게 멀티쓰레드들이 동시에 스택에 데이타를 넣고 꺼낼 때 유용하게 사용될 수 있다.
+
+이래 예제는 하나의 쓰레드가 ConcurrentStack<T>에 0부터 99까지 계속 집어 넣을 때, 동시에 다른 쓰레드에서는 계속 그 스택에서 데이타를 빼내 읽어 오는 작업을 하는 샘플 코드이다.
+이 예제에서 하나의 쓰레드는 100ms 간격을 두고 스택에 데이타를 푸쉬하고 있으며, 다른 쓰레드는 150ms 간격을 두고 데이타를 팝하고 있다.
+이렇게 인위적으로 팝하는 속도는 약간 늦춤으로 해서 0부터 99까지 순차적으로 출력되지 않을 가능성이 더 커지게 된다.
+
+*Stack.Example.cs Example1() 참조
