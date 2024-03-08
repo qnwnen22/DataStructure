@@ -6,11 +6,12 @@ namespace DataStructure
     {
         static void Main(string[] args)
         {
-            var q = new Queue.QueueUsingCircularArray();
-            for (int i = 0; i < 15; i++)
-            {
-                q.Enqueue(i);
-            }
+            var q = new Queue.QueueUsingLinkedList();
+
+            q.Enqueue(1);
+            q.Enqueue(2);
+            q.Enqueue(3);
+            q.Enqueue(4);
         }
     }
 }

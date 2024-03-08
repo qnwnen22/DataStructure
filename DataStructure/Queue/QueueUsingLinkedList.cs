@@ -7,14 +7,15 @@ namespace DataStructure.Queue
         private Node head = null;
         private Node tail = null;
 
-        public QueueUsingLinkedList(object data)
+        public void Enqueue(object data)
         {
+            // Queue가 비어 있는 경우
             if (head == null)
             {
                 head = new Node(data);
                 tail = head;
             }
-            else
+            else // 비어 있는 경우
             {
                 tail.Next = new Node(data);
                 tail = tail.Next;
