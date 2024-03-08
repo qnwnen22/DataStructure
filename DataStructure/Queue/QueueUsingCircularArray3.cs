@@ -4,7 +4,7 @@ namespace DataStructure.Queue
 {
     public class QueueUsingCircularArray3
     {
-        private object[] a;
+        private object[] datas;
         private int front = 0;
         private int rear = 0;
 
@@ -12,19 +12,19 @@ namespace DataStructure.Queue
 
         public QueueUsingCircularArray3(int queueSize = 16)
         {
-            a = new object[queueSize];
+            datas = new object[queueSize];
         }
 
         public void Enqueue(object data)
         {
-            if (Count == a.Length)
+            if (Count == datas.Length)
             {
                 throw new Exception("Full");
             }
 
-            a[rear] = data;
-            rear = (rear + 1) % a.Length;
-            Count++;
+            datas[rear] = data; // 데이터 삽입
+            rear = (rear + 1) % datas.Length; // Rear에 다음 인덱스 값을 할당
+            Count++; // 카운트 증가
         }
 
         public object Dequeue()
@@ -34,9 +34,9 @@ namespace DataStructure.Queue
                 throw new Exception("Empty");
             }
 
-            object data = a[front];
-            front = (front + 1) % a.Length;
-            Count--;
+            object data = datas[front]; // 데이터 출력
+            front = (front + 1) % datas.Length; // Front에 다음 인덱스를 할당
+            Count--; // 카운트 감소
             return data;
         }
     }
