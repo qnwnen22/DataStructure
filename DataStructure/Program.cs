@@ -6,6 +6,13 @@ namespace DataStructure
     {
         static void Main(string[] args)
         {
+            var list = new LinkedList.CricularLinkedList<int>();
+            list.Add(new LinkedList.DoublyLinkedListNode<int>(1));
+            var two = new LinkedList.DoublyLinkedListNode<int>(2);
+            list.Add(two);
+            list.Add(new LinkedList.DoublyLinkedListNode<int>(3));
+            list.Remove(two);
+
             //LinkedList.Example.Example1();
             //LinkedList.Example.Example2();
             //LinkedList.Example.Example3();
@@ -31,7 +38,7 @@ namespace DataStructure
             //Graph.Example.Example1();
             //Graph.Example.Example2();
             //Graph.Example.Example3();
-            
+
             //Graph.Example.Example4();
             // Graph.Example.Example5();
             //Graph.Example.Example6();

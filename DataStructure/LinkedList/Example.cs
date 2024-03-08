@@ -8,8 +8,7 @@ namespace DataStructure.LinkedList
     {
         public static void Example1()
         {
-            // 정수형 단일 연결 리스트 생성
-            var list = new SinglyLinkedList<int>();
+            var list = new SinglyLinkedList<int>(); // 정수형 단일 연결 리스트 생성
 
             // 리스트에 0~4 추가
             for (int i = 0; i < 5; i++)
@@ -71,24 +70,25 @@ namespace DataStructure.LinkedList
 
         public static void Example3()
         {
-            var list = new CricularLinkedList<int>();
+            var list = new CricularLinkedList<int>(); // 리스트 생성
 
+            /// 0~4 까지 데이터 생성 및 리스트 추가
             for (int i = 0; i < 5; i++)
             {
                 list.Add(new DoublyLinkedListNode<int>(i));
             }
 
-            var node = list.GetNode(2);
-            list.Remove(node);
+            var node = list.GetNode(2); // 2번째 노드 가져오기
+            list.Remove(node); // 가져온 노드를 리스트에서 제거
 
-            node = list.GetNode(1);
-            var newNode = new DoublyLinkedListNode<int>(100);
-            list.AddAfter(node, newNode);
+            node = list.GetNode(1); // 1번째 노드 가져오기
+            var newNode = new DoublyLinkedListNode<int>(100); // 100의 값을 가진 노드 생성
+            list.AddAfter(node, newNode); // 가져온 1번째 노드에 다음노드에 새로 생성한 노드 삽입
 
-            int count = list.Count();
+            int count = list.Count(); // 리스트 개수 반환
 
-            node = list.GetNode(0);
-            for (int i = 0; i < count * 2; i++)
+            node = list.GetNode(0); // 0번째 노드 가져오기
+            for (int i = 0; i < count * 2; i++) // 원형 리스트 확인을 위해 리스트 개수에 2배 반복
             {
                 Console.WriteLine(node.Data);
                 node = node.Next;
@@ -97,21 +97,23 @@ namespace DataStructure.LinkedList
 
         public static void Example4()
         {
-            var list = new LinkedList<string>();
-            list.AddLast("Appple");
+            var list = new LinkedList<string>(); // 닷넷에서 제공되는 LinkedList 생성
+            
+            // 데이터를 마지막에 저장
+            list.AddLast("Appple"); 
             list.AddLast("Banana");
             list.AddLast("Lemon");
 
-            var node = list.Find("Banana");
-            var newNode = new LinkedListNode<string>("Grape");
+            var node = list.Find("Banana"); // 데이터 검색
+            
+            var newNode = new LinkedListNode<string>("Grape"); // 새 노드 생성
+            list.AddAfter(node, newNode); // 검색한 노드 뒤에 노드 삽입
 
-            list.AddAfter(node, newNode);
+            list.ToList().ForEach(x => Console.WriteLine(x)); // 리스트 출력
 
-            list.ToList().ForEach(x => Console.WriteLine(x));
+            list.Remove("Grape"); // 노드 제거
 
-            list.Remove("Grape");
-
-            foreach (string item in list)
+            foreach (string item in list) // 리스트 출력
             {
                 Console.WriteLine(item);
             }
