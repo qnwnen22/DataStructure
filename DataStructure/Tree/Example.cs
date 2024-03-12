@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataStructure.Tree
 {
@@ -32,6 +28,7 @@ namespace DataStructure.Tree
 
         public static void Example2()
         {
+            // 노드 생성
             var A = new LCRSNode("A");
             var B = new LCRSNode("B");
             var C = new LCRSNode("C");
@@ -40,16 +37,18 @@ namespace DataStructure.Tree
             var F = new LCRSNode("F");
             var G = new LCRSNode("G");
 
-            A.LeftChild = B;
-            B.RigthSibling = C;
-            C.RigthSibling = D;
-            B.LeftChild = E;
-            E.RigthSibling = F;
-            D.LeftChild = G;
+            A.LeftChild = B; // A 노드에 B 자식노드 연결
+            B.RigthSibling = C; // B 노드에 C 형제노드 연결
+            C.RigthSibling = D; // C 노드에 D 형제노드 연결
+            
+            B.LeftChild = E; // B 노드에 E 자식노드 연결
+            E.RigthSibling = F; // E 노드에 F 형제노드 연결
+            
+            D.LeftChild = G; // D 노드에 G 자식노드 연결
 
             if (A.LeftChild != null)
             {
-                var tmp = A.LeftChild;
+                LCRSNode tmp = A.LeftChild;
                 Console.WriteLine(tmp.Data);
 
                 while (tmp.RigthSibling != null)
@@ -58,6 +57,11 @@ namespace DataStructure.Tree
                     Console.WriteLine(tmp.Data);
                 }
             }
+
+            // 출력 결과
+            // B
+            // C
+            // D
         }
 
         public static void Example3()
@@ -71,7 +75,7 @@ namespace DataStructure.Tree
             tree.AddChild(B, "F");
             tree.AddChild(D, "G");
 
-            tree.PrintIedexTree();
+            tree.PrintIndexTree();
             
             tree.PrintLevelOrder();
         }
