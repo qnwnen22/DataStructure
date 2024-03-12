@@ -18,6 +18,10 @@ namespace DataStructure.BinaryTree
 
         public static void Example2()
         {
+            // 샘플 이진 트리 구성    
+            //     A    
+            //   B   C    
+            // D    F    
             var bt = new BinaryTreeUsingArray(7);
             bt.Root = "A";
             bt.SetLeft(0, "B");
@@ -26,12 +30,18 @@ namespace DataStructure.BinaryTree
             bt.SetLeft(2, "F");
 
             bt.PrintTree();
+            // 출력 결과
+            // A B C D _ F _
 
             var data = bt.GetParent(5);
-            System.Console.WriteLine(data);
+            Console.WriteLine(data);
+            // 출력 결과
+            // C
 
             data = bt.GetLeft(2);
-            System.Console.WriteLine(data); ;
+            Console.WriteLine(data);
+            // 출력 결과
+            // F
         }
 
         public static void Example3()

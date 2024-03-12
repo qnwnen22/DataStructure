@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DataStructure
 {
@@ -6,7 +7,8 @@ namespace DataStructure
     {
         static void Main(string[] args)
         {
-            Tree.Example.Example3();
+            BTree.Example.Example1();
+
         }
     }
 }

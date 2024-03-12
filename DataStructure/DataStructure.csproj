@@ -52,6 +52,9 @@
     <Compile Include="BinaryTree\BinaryTreeUsingArray.cs" />
     <Compile Include="BinaryTree\Example.cs" />
     <Compile Include="BinaryTree\ExpressionTree.cs" />
+    <Compile Include="BTree\BTree.cs" />
+    <Compile Include="BTree\BTreeNode.cs" />
+    <Compile Include="BTree\Example.cs" />
     <Compile Include="Graph\DisjointSet.cs" />
     <Compile Include="Graph\Example.cs" />
     <Compile Include="Graph\Graph5.cs" />
