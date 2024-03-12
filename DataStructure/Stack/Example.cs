@@ -9,8 +9,9 @@ namespace DataStructure.Stack
     {
         public static void Example1()
         {
-            var concurrentStack = new ConcurrentStack<int>();
+            var concurrentStack = new ConcurrentStack<int>(); // 닷넷에서 지원하는, 멀티쓰레드 환경에서 Locking처리가 되어있는 큐 클래스
 
+            // 0.1 초마다 스택에 데이터를 삽입하는 쓰레드
             Task tPush = Task.Factory.StartNew(() =>
             {
                 for (int i = 0; i < 100; i++)
@@ -20,6 +21,7 @@ namespace DataStructure.Stack
                 }
             });
 
+            // 0.15 초마다 스택에 데이터를 반환하는 쓰레드
             Task tPop = Task.Factory.StartNew(() =>
             {
                 int n = 0;
@@ -35,7 +37,7 @@ namespace DataStructure.Stack
                 }
             });
 
-            Task.WaitAll(tPush, tPop);
+            Task.WaitAll(tPush, tPop); // 두 쓰레드가 끝날 때 까지 대기
         }
 
         public static void Example2()
