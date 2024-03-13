@@ -2,22 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DataStructure
+namespace DataStructure.Programmers
 {
-    class Program
+    /// <summary>
+    /// https://school.programmers.co.kr/learn/courses/30/lessons/12981
+    /// </summary>
+    class Question1
     {
-        static void Main(string[] args)
-        {
-            var words1 = new string[] { "tank", "kick", "know", "wheel", "land", "dream", "mother", "robot", "tank" };
-            var r1 = Solution(3, words1);
-            var str = r1.ToString();
-            var words2 = new string[] { "hello", "observe", "effect", "take", "either", "recognize", "encourage", "ensure", "establish", "hang", "gather", "refer", "reference", "estimate", "executive" };
-            var r2 = Solution(5, words2);
-            var words3 = new string[] { "hello", "one", "even", "never", "now", "world", "draw" };
-            var r3 = Solution(2, words3);
-        }
-
-        public static int[] Solution(int n, string[] words)
+        public int[] Solution(int n, string[] words)
         {
             var result = new int[] { 0, 0 };
 
@@ -35,11 +27,11 @@ namespace DataStructure
                 if (dic.Count > 0)
                 {
                     string last = dic.Keys?.Last();
-                    
+
                     char lastChar = last.Last();
                     char firstChar = word.First();
                     bool isContains = dic.ContainsKey(word);
-                    
+
                     if (lastChar != firstChar || isContains)
                     {
                         int num = current + 1;

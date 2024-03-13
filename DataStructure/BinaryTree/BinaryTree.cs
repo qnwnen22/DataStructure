@@ -24,7 +24,7 @@ namespace DataStructure.BinaryTree
         {
             if (node == null) return;
 
-            Console.WriteLine("{0}", node.Data);
+            Console.Write("{0} ", node.Data);
             PreorderTraversal(node.Left);
             PreorderTraversal(node.Right);
         }
@@ -42,7 +42,7 @@ namespace DataStructure.BinaryTree
             if (node == null) return;
 
             InorderTraversal(node.Left);
-            Console.WriteLine("{0}", node.Data);
+            Console.Write("{0} ", node.Data);
             InorderTraversal(node.Right);
         }
 
@@ -60,7 +60,7 @@ namespace DataStructure.BinaryTree
 
             PostorderTraversal(node.Left);
             PostorderTraversal(node.Right);
-            Console.WriteLine("{0}", node.Data);
+            Console.Write("{0} ", node.Data);
         }
 
         /// <summary>

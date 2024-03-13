@@ -14,6 +14,14 @@ namespace DataStructure.BinaryTree
             bt.Root.Left.Left = new BinaryTreeNode<int>(4);
 
             bt.PreorderTraversal();
+            Console.WriteLine();
+            //출력 결과
+            // 1 2 4 3
+            bt.InorderTraversal();
+            Console.WriteLine();
+            bt.PostorderTraversal();
+            Console.WriteLine();
+
         }
 
         public static void Example2()
