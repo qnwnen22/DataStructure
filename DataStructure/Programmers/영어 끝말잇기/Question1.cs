@@ -9,6 +9,12 @@ namespace DataStructure.Programmers
     /// </summary>
     class Question1
     {
+        /// <summary>
+        /// 영어 끝말잇기
+        /// </summary>
+        /// <param name="n">참여자 수</param>
+        /// <param name="words">끝말잇기 리스트</param>
+        /// <returns>[ 번호, 차례 ]</returns>
         public int[] Solution(int n, string[] words)
         {
             var result = new int[] { 0, 0 };
