@@ -2,6 +2,7 @@
 
 이진 트리를 사용하면서 유용하게 사용되는 몇가지 알고리즘을 소개한다.
 
+
 이진 트리 깊이(Depth)구하기
 
 이진 트리는 하나의 루트 노드와 왼쪽 자식 노드를 중심으로 한 왼쪽 서브트리, 그리고 오른쪽 자식 노드를 중심으로 한 오른쪽 서브트리로 구성되어 있다.
@@ -11,18 +12,20 @@
 
 아래는 이러한 재귀 호출 방식으로 트리의 최대 깊이를 구한 예제이다.
 
-*BinaryTree.BinaryTree.cs GetMaxDeplth() 참조
+*BinaryTree.BinaryTree.cs 및 GetMaxDeplth() 메서드 참조
 
 트리의 깊이(Tree Depth)는 루트 노드에서 가장 먼 거리에 있는 Leaf 노드와의 길이를 구하는 것인데, 이는 다시 말하면 루트와 가장 멀리 있는 Leaf 노드 간의 간선(Edge)의 수에 해당된다.
 위 코드에서 트리 깊이를 (노드의 수가 아닌) 간선의 수로 계산하기 위해 node가 null일 때 -1을 리턴하였다.
 이러한 계산에 의하면, 노드가 아예 없는 빈 트리의 경우는 깊이가 -1이 되고, 루트 노드 하나만 있는 경우 깊이는 0이 된다.
+
 
 이진 트리 노드 수 구하기
 
 이진 트리가 몇 개의 노드를 가지고 있는지 세는 Count() 메서드는 노드 전체를 순회하면서 구할 수도 있지만, 아래 예제와 같이 재귀 호출을 통해서도 쉽게 구할 수 있다.
 즉, 이진 트리를 루트와 좌우 서브트리로 분류하고, 루트노드 하나와 재귀 호출을 사용하여 왼쪽 서브트리의 카운트와 오른쪽 서브트리의 카운트를 모두 더하면 된다.
 
-*BinaryTree.BinaryTree.cs Count() 참조
+*BinaryTree.BinaryTree.cs 및 Count() 메서드 참조
+
 
 이진 트리에서 노드 경로 찾기
 
@@ -38,14 +41,35 @@
 
 아래는 위의 기본 로직을 사용하여 루트부터 특정 노드까지의 경로를 검색하는 예제이다.
 
-*BinaryTree.BinaryTree.cs FindTreePath() 참조
+*BinaryTree.BinaryTree.cs 및 FindTreePath() 메서드 참조
+
+    /* 호출 예제
+    var path = new List<BinaryTreeNode<char>>();
+    bool found = tree.FindTreePath(root, target, path);
+    if (found)
+    {
+        foreach (var node in path)
+        {
+            Console.Write("{0} ", node.Data);
+        }
+    }
+    */
 
 최소 공통 조상(Lowest Common Ancestor) 구하기
 
 최소 공통 조상(LCA)이란 트리 구조에서 임의의 두 노드를 지정했을 때 두 노드를 포함하는 가장 가까운 공통의 부모를 말한다.
 예를 들어, 아래 그림에서 노드 D와 G의 최소 공통 조상은 노드 B가 되고, D와 C의 최소 공통 조상은 A가 되며, C와 F의 최소 공통 조상은 C가 된다.
 
-*이미지 참조
+        최소 공통 조상 (LCA)
+        
+                 ( A )
+                ／    ＼
+             ( B )    ( C )
+            ／ ＼      ／
+         ( D ) ( E ) ( F )
+               ／  
+            ( F )
+
 
 최소 공통 조상을 구하는 것은 두 노드 간의 거리를 구하는데 유용하게 사용되는데, 두 노드 간의 거리는 (루트와 노드1 간의 거리) + (루트와 노드2 간의 거리) - (2 * 루트와 LCA 간의 거리)로 계산된다.
 
@@ -54,7 +78,28 @@
 이러한 방식은 보통 트리를 두 번 순회하여야 하고, 별도의 경로 저장 공간이 필요하다는 단점이 있다.
 아래는 이러한 경로 찾기 방식을 사용한 예제이다.
 
-*나중에 작성
+    var path1 = new List<BinaryTreeNode<char>>();
+    var path2 = new List<BinaryTreeNode<char>>();
+
+    found = btree.FindTreePath(root, nodeD, path1) && btree.FindTreePath(root, nodeG, path2);
+
+    if (found)
+    {
+        int n = Math.Min(path1.Count, path2.Count);
+        char lcaVal = ' ';
+        for (int i = 0; i < n; i++)
+        {
+            if (path1[i] == path2[i])
+            {
+                lcaVal = path1[i].Data;
+            }
+            else
+            {
+                break;
+            }
+        }
+        Console.WriteLine(lcaVal);
+    }
 
 최소 공통 조상을 구하는데 좀 더 효율적인 방법으로 재귀 호출을 해가며 한번의 트리 순회로 LCA를 찾는 방법이 있다.
 이러한 방법은 트리를 루트 노드와 왼쪽 서브트리, 오른쪽 서브트리로 구분하고, (1) 루트 노드가 임의의 두 노드(a,b)와 같으면 해당 루트 노드가 LCA 노드가 되고, (2) 같지 않으면 왼쪽과 오른쪽 서브트리에서 각각 CAL를 재귀 호출하고 두 노두(a,b)와 같으면 해당 루트 노드가 LCA 노드가 되는 것이다.
@@ -62,4 +107,4 @@
 
 아래 예제는 두 노드가 트리안에 존재한다는 가정하에 위와 같은 재귀 호출 방법으로 구현한 코드이다.
 
-*BinaryTree.BinaryTree.cs LeastCommonAncestor() 참조
+*BinaryTree.BinaryTree.cs 및 LeastCommonAncestor() 메서드 참조

@@ -92,7 +92,7 @@ namespace DataStructure.BinaryTree
                 }
             }
         }
-        
+
         // <summary>
         /// 스택을 사용한 중위 순회
         /// </summary>
@@ -319,6 +319,8 @@ namespace DataStructure.BinaryTree
 
             path.RemoveAt(path.Count - 1);
             return false;
+
+            
         }
 
         public BinaryTreeNode<T> LeastCommonAncestor(BinaryTreeNode<T> root, BinaryTreeNode<T> a, BinaryTreeNode<T> b)

@@ -17,6 +17,7 @@
 위와 같은 전형적인 이진 트리(Binary Tree)를 비롯하여 아래와 같이 여러 모양의 이진 트리들이 있을 수 있다.
 
 	(A) Skewed Binary Tree			(B) Full Binary Tree			(C) Complete Binary Tree
+		 (사향이진트리)				    (포화이진트리)				     (완전이진트리)
 
 					( A ) 					 ( A )							 ( A )
 					／			   			／	  ＼				   		／	  ＼

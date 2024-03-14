@@ -5,9 +5,22 @@
 
 예를 들어, 10 / 4 + 4 * 5 라는 식을 수식트리로 표시하면 아래와 같다.
 
-*이미지 참조
+
+		   Expressin Tree
+		
+		( 10 / 4 ) + ( 3 * 5 )
+
+			   ( + )
+			 ／    ＼
+		  ( / )		 ( * )	
+		 ／	 ＼		／	 ＼
+	  ( 10 ) ( 4 )( 3 ) ( 5 )	
+
+	  Postfix: 10 4 / 3 5 * +
+	 
 
 그림에서 보듯이, 수식트리의 단말노드에는 피연산자가 있으며, 루트를 비롯한 내부 노드에는 연산자들로 구성되어 있다.
+
 
 수식트리 구축
 
@@ -22,7 +35,8 @@
 
 아래는 위와 같은 로직을 사용하여 수식트리를 구축하는 예제이다.
 
-*BinaryTree.ExpressionTree.cs 참조
+*BinaryTree.ExpressionTree.cs 및 Build() 메서드 참조
+
 
 수식트리 계산
 
@@ -34,12 +48,15 @@
 
 *BinaryTree.ExpressionTree.cs Evaluate() 참조
 
+
 수식트리 순회
 
 수식트리는 이진트리와 동일한 방식으로 순회한다.
-수식트리를 전위순회하면 전위표기로 된 수식을 산출할 수 있고, 중위순회를 하면 보통 우리가 사용하는 중위표기로 된 수식을 산출한다.
-마찬가지로 후휘순회를 하면 컴퓨터에서 사용하는 후위표기 수식을 산출할 수 있다.
+수식트리를 전위순회(Preorder Traversal)하면 전위표기(Prefix Notation)로 된 수식을 산출할 수 있고, 중위순회(Inorder Traversal)를 하면 보통 우리가 사용하는 중위표기(Infix Notation)로 된 수식을 산출한다.
+마찬가지로 후휘순회(Postorder Traversal)를 하면 컴퓨터에서 사용하는 후위표기(Postfix Notation) 수식을 산출할 수 있다.
 
 특히, 중위표기에서는 괄호를 넣을 필요가 있으므로, 수식트리를 중위순회할 때 루트 혹은 서브트리의 루트가 연산자인지 체크해서 연산자이면 처음에 "(" 을 넣고, 마지막에 ")"을 넣어준다.
 
 아래는 지금까지 설명한 수식트리 전체에 대한 예제인데, 중간 부분에 Inorder(), Postorder() 메서드가 수식트리 순회와 관련된 코드이다.
+
+*BinaryTree.ExpressionTree.cs 및 Inorder(), Postorder(), IsOperator() 메서드, BinaryTree.Example.cs 및 Example3() 메서드 참조
