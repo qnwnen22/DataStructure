@@ -1,9 +1,6 @@
 ﻿using DataStructure.BinaryTree;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataStructure.BinarySearchTree
 {
@@ -35,14 +32,15 @@ namespace DataStructure.BinarySearchTree
             Node<T> node = root;
             while (node != null)
             {
-                int cmp = data.CompareTo(node.Data);
-                if (cmp == 0)
+                int compare = data.CompareTo(node.Data); // 중복 값 예외처리
+                if (compare == 0)
                 {
                     throw new Exception();
                 }
-                else if (cmp < 0)
+                else if (compare < 0) // 값이 작을 경우 왼쪽노드로 이동
                 {
-                    if (node.Left == null)
+                    // 노드가 비어 있을 경우 삽입
+                    if (node.Left == null) 
                     {
                         node.Left = new Node<T>(data);
                         break;
@@ -52,8 +50,9 @@ namespace DataStructure.BinarySearchTree
                         node = node.Left;
                     }
                 }
-                else
+                else // 값이 클 경우 오른쪽 노드로 이동
                 {
+                    // 노드가 비어 있을 경우 삽입
                     if (node.Right == null)
                     {
                         node.Right = new Node<T>(data);
@@ -66,14 +65,15 @@ namespace DataStructure.BinarySearchTree
                 }
             }
         }
+
         public bool Search(T data)
         {
-            var node = root;
+            Node<T> node = root;
 
             while (node != null)
             {
                 int cmp = data.CompareTo(node.Data);
-                if (cmp == 0)
+                if (cmp == 0)  
                 {
                     return true;
                 }

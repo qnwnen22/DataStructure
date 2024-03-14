@@ -70,11 +70,5 @@ namespace DataStructure.BinaryTree
             var result = et.Evaluate(et.Root);
             Console.WriteLine($"Result: {result}");
         }
-
-        public static void Example4()
-        {
-            
-
-        }
     }
 }
