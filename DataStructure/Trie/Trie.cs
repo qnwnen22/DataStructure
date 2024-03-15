@@ -37,6 +37,7 @@ namespace DataStructure.Trie
             node.EndOfWord = true;
         }
 
+
         public bool Find(string str)
         {
             Node node = root;
@@ -90,6 +91,43 @@ namespace DataStructure.Trie
             {
                 Preorder(node.Children[key], nodeStr + key, results);
             }
+        }
+
+       
+
+        public void Delete(string word)
+        {
+            Delete(root, word, 0);
+        }
+
+        private bool Delete(Node current, string word, int index)
+        {
+            if (index == word.Length)
+            {
+                if (!current.EndOfWord)
+                {
+                    return false; // Trie에서 단어를 찾을 수 없습니다.
+                }
+                current.EndOfWord = false;
+                return current.Children.Count == 0; // 현재 노드에 다른 매핑이 없으면 true를 반환합니다.
+            }
+
+            char ch = word[index];
+            if (!current.Children.ContainsKey(ch))
+            {
+                return false; // Trie에서 단어를 찾을 수 없습니다.
+            }
+
+            bool shouldDeleteCurrentNode = Delete(current.Children[ch], word, index + 1);
+
+            // true가 반환되면 문자와 TrieNode 참조의 매핑을 맵에서 삭제합니다.
+            if (shouldDeleteCurrentNode)
+            {
+                current.Children.Remove(ch);
+                // 맵에 매핑이 남아 있지 않으면 true를 반환합니다.
+                return current.Children.Count == 0;
+            }
+            return false;
         }
     }
 }

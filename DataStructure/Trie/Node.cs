@@ -4,7 +4,6 @@
     {
         public Node[] Children { get; private set; }
         public bool EndOfWord { get; set; }
-        
         public string Word { get; set; }
 
         public Node()

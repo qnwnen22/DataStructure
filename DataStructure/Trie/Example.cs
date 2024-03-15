@@ -49,6 +49,9 @@ namespace DataStructure.Trie
             trie.Insert("안녕하신가요");
             trie.Insert("안녕하세요");
 
+            trie.Delete("안녕하세요");
+
+
             var results = trie.AutoComplete("프로");
             foreach (var item in results)
             {
