@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataStructure.HashTable
 {
@@ -15,6 +11,17 @@ namespace DataStructure.HashTable
         {
             this.buckets = new Node[size];
             this.size = size;
+        }
+        private int HashFunction(object key)
+        {
+            int h = Math.Abs(key.GetHashCode());
+
+            int hash = h & 0xff;
+            hash += (h >> 8) & 0xff;
+            hash += (h >> 16) & 0xff;
+            hash += (h >> 24) & 0xff;
+
+            return hash % size;
         }
 
         // Key/Value 엔트리 추가
@@ -73,17 +80,7 @@ namespace DataStructure.HashTable
             return false;
         }
 
-        private int HashFunction(object key)
-        {
-            int h = Math.Abs(key.GetHashCode());
-
-            int hash = h & 0xff;
-            hash += (h >> 8) & 0xff;
-            hash += (h >> 16) & 0xff;
-            hash += (h >> 24) & 0xff;
-
-            return hash % size;
-        }
+       
 
         private class Node
         {

@@ -1,24 +1,24 @@
 ﻿11.4 해시테이블 구현
 
-해시테이블은 기본적으로 Bucket 배열에 Key/Value 엔트리를 저장하고 인출하는 구조이므로 해시테이블클래스는 Bucket 배열을 기본 데이타 필드로 갖는다.
+해시테이블은 기본적으로 Bucket 배열에 Key/Value 엔트리를 저장하고 인출하는 구조이므로 해시테이블 클래스는 Bucket 배열을 기본 데이타 필드로 갖는다.
 
 여기서는 Chaining 방식으로 해시 충돌 문제를 해결하는 해시테이블에 대해 살펴 본다.
 해시테이블에서 자주 사용되는 주요 메서드로는 다음과 같은 메서드들을 들 수 있다.
 
 	- Add(key, value) 메서드: 해시테이블에 새로운 Key/Value 엔트리를 추가하는 메서드이다.
-							 입력된 Key를 해시함수를 사용하여 Bucket 주소로 변환하고, 이 Bucket에 Key/Value 엔트리를 추가한다.
-							 만약 해당 Bucket 주소에 이미 다른 엔트리가 있다면, 해당 Bucket의 엔트리 연결 리스트 앞부분에 새 엔트리를 삽입한다.
-							 이는 연결리스트의 마지막까지 이동한 후 뒤에 추가하는 것보다 더 효율적인 방법이다.
+							  입력된 Key를 해시함수를 사용하여 Bucket 주소로 변환하고, 이 Bucket에 Key/Value 엔트리를 추가한다.
+							  만약 해당 Bucket 주소에 이미 다른 엔트리가 있다면, 해당 Bucket의 엔트리 연결 리스트 앞부분에 새 엔트리를 삽입한다.
+							  이는 연결리스트의 마지막까지 이동한 후 뒤에 추가하는 것보다 더 효율적인 방법이다.
 	
 	- Get(key) 메서드: 해시테이블에서 입력된 Key에 사응하는 Value를 리턴하는 메서드이다.
-					  입력된 Key를 해시함수를 사용하여 Bucket 주소로 변환하고, 이 Bucket에 있는 연결 리스트에서 해당 Key를 갖는 Key.Value 엔트리를 검색하여 Value를 리턴한다.
+					   입력된 Key를 해시함수를 사용하여 Bucket 주소로 변환하고, 이 Bucket에 있는 연결 리스트에서 해당 Key를 갖는 Key.Value 엔트리를 검색하여 Value를 리턴한다.
 	
 	- Contains(Key) 메서드: 해시테이블에서 입력된 Key가 존재하는지 체크하는 메서드이다.
-						   입력된 Key를 해시함수를 사용하여 Bucket 주소로 변환하고, 이 Bucket에 있는 연결 리스트에서 해당 Key를 갖는 엔트리를 검색하여 있으면 true 없으면 false를 리턴한다.
+						    입력된 Key를 해시함수를 사용하여 Bucket 주소로 변환하고, 이 Bucket에 있는 연결 리스트에서 해당 Key를 갖는 엔트리를 검색하여 있으면 true 없으면 false를 리턴한다.
 
 아래 예제는 위에서 언급한 주요 메서드를 구현한 간단한 해시테이블 클래스의 예이다.
 
-*HashTable.HashTable.cs 참조
+*HashTable.HashTable.cs 및 Add(), Get(), Contains(), DebugPrintBuckets() 메서드, HashTable.Example.cs 및 Example() 메서드 참조
 
 해시트에블의 Bucket 배열은 연결 리스트 노드들을 가리키는 배열이고 생성자에서 임의의 Bucket 크기로 배열을 생성한다.
 연결 리스트 노드는 단일 연결 리스트노드로서 Key, Value와 다음 노드를 가리키는 Next 노드를 가지고 있다.
