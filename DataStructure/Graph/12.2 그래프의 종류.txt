@@ -5,10 +5,16 @@
 
 Directed Graph와 Undirected Graph
 
-방향그래프는 유향그래프라고도 불리우는데, 간선이 방향을 가지고 있는 그래프로서 하나의 간선이 한 방향을 가리키는 그래프이다.
-무방향그래프는 간선이 방향을 가지고 있지 않은 것으로 양방향으로 이동할 수 있는 그래프이다.	
+방향그래프(Directed Graph)는 유향그래프라고도 불리우는데, 간선이 방향을 가지고 있는 그래프로서 하나의 간선이 한 방향을 가리키는 그래프이다.
+무방향그래프(Undirected Graph)는 간선이 방향을 가지고 있지 않은 것으로 양방향으로 이동할 수 있는 그래프이다.
 
-*이미지 참조
+
+	Directed Graph			Undirected Graph
+	
+	 ( 3 )  ( 5 )			  ( 3 )  ( 5 )
+	  ↑  ↘  ↓			   │  ＼  │
+	 ( 1 )  ( 7 )			  ( 3 )  ( 5 )
+
 
 Cyclic Graph와 Acyclic Graph
 
@@ -17,7 +23,20 @@ Cyclic Graph와 Acyclic Graph
 Cyclic Graph와 비슷한 용어이지만 다른 의미인 Cycle Graph는 모든 정점이 사이클을 구성하는데 사용되는 그래프로서 정다각형의 그래프이다.
 예를 들어, 정삼각형, 정사각형, 정오각형 등의 그래프가 Cycle Graph이다.
 
-*이미지 참조
+	
+	Cyclic Graph			Acyclic Graph
+
+	( 3 )  ( 5 )            ( 3 )  ( 5 )
+	 ↑  ↘  ↓              ↑  ↘  ↓
+	( 1 )←( 7 )            ( 1 )  ( 7 )
+
+
+			    Cycle Graph
+
+	     ( 3 )			( 3 )→( 5 )
+	    ／    ＼		 ↑     ↓ 
+	 ( 1 ) ─ ( 5 )	    ( 1 )←( 7 )
+
 
 Connected Graph와 Disconnected Graph
 
@@ -28,7 +47,20 @@ Connected Graph와 Disconnected Graph
 그래프는 연결된 그래프와 연결되지 않은 그래프가 혼합되어 하나의 그래프를 형성할 수 있는데, 이때 연결되어져 있는 부분그래프를 연결 성분(Connected Component) 이라 부른다.
 따라서, 비연결그래프(Disconnected Graph)는 두 개 이상의 연결성분(Connected Component)을 갖는 그래프라 할 수 있다.
 
-*이미지 참조
+
+	Connected Graph			Disconnected Graph
+	
+	  ( 3 )─( 5 )            ( 3 )  ( 5 )
+	   │     │               │ 
+	  ( 1 )  ( 7 )            ( 1 )─( 7 )
+
+
+			Connected Components
+
+			( B )     ( D )		( Y )
+		   ／   ＼   ／		   ／
+	    ( A )──( C )       ( X )
+
 
 위 연결성분(Connected Component) 그림에서 A,B,C,D 로 연결된 부분그래프가 하나의 연결성분이고, X,Y 로 연결된 그래프가 또 하나의 연결성분이다.
 
@@ -37,13 +69,32 @@ Weighted Graph
 가중치 그래프(Weighted Graph)란 간성에 비용이 가중치를 할당한 그래프를 가리킨다.
 예를 들어, 항공기 운황로에서 도시 간 거리를 간성위에 표시할 수 있는데 이것이 가중치 그래프이다.
 
-*이미지 참조
 
-Multigraph)
+		      Weighted Graph
+		
+				 (서울)  10
+			   ／  │	＼ 
+			6 ／   │7   (강릉)
+		     ／    │   ／ 
+		(대전)   (대구)  4  
+			＼ 	   │ 
+			7 ＼   │ 3
+			     (부산)
+
+
+Multigraph
 
 다중 그래프(Multigraph)란 정점 간에 여러 개의 간선을 허용하는 그래프를 가리킨다.
 
-*이미지 참조
+
+		   Multigraph
+
+		(서울)───(강릉)
+		 ││ ＼	 ││
+		 ││	＼	 ││
+		 ││	  ＼ ││
+		(대전)      (대구)
+
 
 방향 비순환 그래프 (Directed Acyclic Graph)
 
@@ -52,4 +103,14 @@ Multigraph)
 방향 비순환 그래프는 주로 위상 정렬을 통해 정점들 간의 선후 관계 혹은 의존 관계를 표현하고 처리하는데 활용된다.
 아래 그림은 "셋업 - SetA - App1 - App2" 경로와 "셋업 - SetB - App1 - App2" 경로를 가질 수 있는 DAG 그래프를 표현한 예이다.
 
-*이미지 참조
+
+		   DAG
+
+	(셋업)───┐
+	 │         ↓ 
+	  ↘      (Set B)
+	  (Set A)   │
+			↘  ↓
+			   (App1)
+			      ↘
+				  (App2)
