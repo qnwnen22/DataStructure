@@ -8,7 +8,7 @@ namespace DataStructure
     {
         static void Main(string[] args)
         {
-            Trie.Example.Example3();
+            Graph.Example.Example9();
 
         }
 

@@ -5,123 +5,150 @@ namespace DataStructure.Graph
 {
     public class Example
     {
+        /// <summary>
+        /// 동적배열을 활용한 그래프 사용 예제
+        /// </summary>
         public static void Example1()
         {
-            var gr = new Graph<string>();
-            Node1<string> seoul = gr.AddVertex("서울");
-            Node1<string> daejun = gr.AddVertex("대전");
-            Node1<string> daeku = gr.AddVertex("대구");
-            Node1<string> pusan = gr.AddVertex("부산");
-            Node1<string> kangrung = gr.AddVertex("강릉");
+            var graph = new UsingDynamicArray.Graph<string>();
 
-            gr.AddEdge(seoul, daejun, 6);
-            gr.AddEdge(seoul, daeku, 7);
-            gr.AddEdge(seoul, kangrung, 10);
-            gr.AddEdge(daejun, pusan, 7);
-            gr.AddEdge(daeku, pusan, 3);
-            gr.AddEdge(kangrung, daeku, 4);
+            var seoul = graph.AddVertex("서울");
+            var daejun = graph.AddVertex("대전");
+            var daeku = graph.AddVertex("대구");
+            var pusan = graph.AddVertex("부산");
+            var kangrung = graph.AddVertex("강릉");
 
-            gr.DebugPrintGraph();
+            graph.AddEdge(seoul, daejun, 6);
+            graph.AddEdge(seoul, daeku, 7);
+            graph.AddEdge(seoul, kangrung, 10);
+            graph.AddEdge(daejun, pusan, 7);
+            graph.AddEdge(daeku, pusan, 3);
+            graph.AddEdge(kangrung, daeku, 4);
+
+            graph.DebugPrintGraph();
         }
 
+        /// <summary>
+        /// 해시테이블을 활용한 그래프 사용 예제
+        /// </summary>
         public static void Example2()
         {
-            var gr = new Graph3();
-            gr.AddVertex("A");
-            gr.AddVertex("B");
-            gr.AddVertex("C");
-            gr.AddVertex("D");
-            gr.AddEdge("A", "B", 5);
-            gr.AddEdge("A", "D", 9);
-            gr.AddEdge("B", "D", 6);
-            gr.AddEdge("D", "C", 7);
+            var graph = new UsingHashtable.Graph();
 
-            gr.DebugPrintGraph();
+            graph.AddVertex("A");
+            graph.AddVertex("B");
+            graph.AddVertex("C");
+            graph.AddVertex("D");
+
+            graph.AddEdge("A", "B", 5);
+            graph.AddEdge("A", "D", 9);
+            graph.AddEdge("B", "D", 6);
+            graph.AddEdge("D", "C", 7);
+
+            graph.DebugPrintGraph();
         }
 
+        /// <summary>
+        /// 링크드리스트를 활용한 그래프 사용 예제
+        /// </summary>
         public static void Example3()
         {
-            var gr = new Graph4();
-            gr.AddVertex("A");
-            gr.AddVertex("B");
-            gr.AddVertex("C");
-            gr.AddVertex("D");
-            gr.AddEdge("A", "B", 5);
-            gr.AddEdge("A", "D", 9);
-            gr.AddEdge("B", "D", 6);
-            gr.AddEdge("D", "C", 7);
+            var graph = new UsingLinkedList.Graph();
+            graph.AddVertex("A");
+            graph.AddVertex("B");
+            graph.AddVertex("C");
+            graph.AddVertex("D");
 
-            gr.DebugPrintGraph();
+            graph.AddEdge("A", "B", 5);
+            graph.AddEdge("A", "D", 9);
+            graph.AddEdge("B", "D", 6);
+            graph.AddEdge("D", "C", 7);
+
+            graph.DebugPrintGraph();
         }
 
+        /// <summary>
+        /// 인접행렬 그래프 사용 예제
+        /// </summary>
         public static void Example4()
         {
             string[] vertices = { "A", "B", "C", "D" };
 
-            Graph5 gr = new Graph5(vertices);
-            gr.AddEdge("A", "B");
-            gr.AddEdge("B", "D");
-            gr.AddEdge("A", "D");
-            gr.AddEdge("C", "D");
+            var graph = new AdjacencyMatrix.Graph(vertices);
 
-            gr.DebugPrintGraph();
+            graph.AddEdge("A", "B");
+            graph.AddEdge("B", "D");
+            graph.AddEdge("A", "D");
+            graph.AddEdge("C", "D");
+
+            graph.DebugPrintGraph();
         }
 
+        /// <summary>
+        /// 그래프 탐색 예제(동적배열 그래프)
+        /// </summary>
         public static void Example5()
         {
-            var gr = new Graph<string>();
-            var A = gr.AddVertex("A");
-            var B = gr.AddVertex("B");
-            var C = gr.AddVertex("C");
-            var D = gr.AddVertex("D");
-            var E = gr.AddVertex("E");
-            var F = gr.AddVertex("F");
-            var G = gr.AddVertex("G");
+            var graph = new UsingDynamicArray.Graph<string>();
+            var A = graph.AddVertex("A");
+            var B = graph.AddVertex("B");
+            var C = graph.AddVertex("C");
+            var D = graph.AddVertex("D");
+            var E = graph.AddVertex("E");
+            var F = graph.AddVertex("F");
+            var G = graph.AddVertex("G");
 
             // 비연결그래프 - 부분그래프 X-Y
-            var X = gr.AddVertex("X");
-            var Y = gr.AddVertex("Y");
+            var X = graph.AddVertex("X");
+            var Y = graph.AddVertex("Y");
 
-            gr.AddEdge(A, B);
-            gr.AddEdge(A, D);
-            gr.AddEdge(A, E);
-            gr.AddEdge(B, C);
-            gr.AddEdge(E, F);
-            gr.AddEdge(E, G);
-            gr.AddEdge(E, G);
-            gr.AddEdge(X, Y);
+            graph.AddEdge(A, B);
+            graph.AddEdge(A, D);
+            graph.AddEdge(A, E);
+            graph.AddEdge(B, C);
+            graph.AddEdge(E, F);
+            graph.AddEdge(E, G);
+            graph.AddEdge(E, G);
+            graph.AddEdge(X, Y);
 
-            gr.DFS();
+            Console.WriteLine("DFS : ");
+            graph.DFS();
+            Console.WriteLine();
 
-            // 실행결과 : 
-            // A B C D E F G
-            // X Y 
+            Console.WriteLine("DFSIterative : ");
+            graph.DFSIterative();
+            Console.WriteLine();
+
+            Console.WriteLine("BFS : ");
+            graph.BFS();
+            Console.WriteLine();
         }
+
+
 
         public static void Example6()
         {
-            var gr = new Graph<string>();
-            var A = gr.AddVertex("A");
-            var B = gr.AddVertex("B");
-            var C = gr.AddVertex("C");
-            var D = gr.AddVertex("D");
-            var E = gr.AddVertex("E");
-            var F = gr.AddVertex("F");
+            var graph = new UsingDynamicArray.Graph<string>(true);
+            var A = graph.AddVertex("A");
+            var B = graph.AddVertex("B");
+            var C = graph.AddVertex("C");
+            var D = graph.AddVertex("D");
+            var E = graph.AddVertex("E");
+            var F = graph.AddVertex("F");
 
-            gr.AddEdge(A, B);
-            gr.AddEdge(A, D);
-            gr.AddEdge(B, C);
-            gr.AddEdge(C, D);
-            gr.AddEdge(C, E);
-            gr.AddEdge(C, F);
-            gr.AddEdge(D, F);
+            graph.AddEdge(A, B);
+            graph.AddEdge(A, D);
+            graph.AddEdge(B, C);
+            graph.AddEdge(C, D);
+            graph.AddEdge(C, E);
+            graph.AddEdge(C, F);
+            graph.AddEdge(D, F);
 
-            Stack<Node1<string>> result = gr.TopologicalSort();
-            foreach (Node1<string> node in result)
+            var result = graph.TopologicalSort();
+            foreach (var node in result)
             {
                 Console.Write("{0} ", node.Data);
             }
-
             Console.WriteLine();
             // 결과 : A B C D E F
         }
@@ -186,28 +213,30 @@ namespace DataStructure.Graph
 
         public static void Example9()
         {
-            var g = new GraphV3();
-            var a = g.AddVertex("0");
-            g.AddVertex("1");
-            g.AddVertex("2");
-            g.AddVertex("3");
-            g.AddVertex("4");
-            g.AddVertex("5");
-            g.AddVertex("6");
-            g.AddEdge("0", "1", 7);
-            g.AddEdge("0", "4", 3);
-            g.AddEdge("0", "5", 10);
-            g.AddEdge("1", "5", 6);
-            g.AddEdge("1", "2", 4);
-            g.AddEdge("1", "3", 10);
-            g.AddEdge("2", "3", 2);
-            g.AddEdge("3", "5", 9);
-            g.AddEdge("4", "1", 2);
-            g.AddEdge("4", "3", 11);
-            g.AddEdge("4", "6", 5);
-            g.AddEdge("6", "3", 4);
+            var graph = new GraphV3();
 
-            g.Dijkstra(a);
+            var startNode = graph.AddVertex("0");
+            graph.AddVertex("1");
+            graph.AddVertex("2");
+            graph.AddVertex("3");
+            graph.AddVertex("4");
+            graph.AddVertex("5");
+            graph.AddVertex("6");
+
+            graph.AddEdge("0", "1", 7);
+            graph.AddEdge("0", "4", 3);
+            graph.AddEdge("0", "5", 10);
+            graph.AddEdge("1", "5", 6);
+            graph.AddEdge("1", "2", 4);
+            graph.AddEdge("1", "3", 10);
+            graph.AddEdge("2", "3", 2);
+            graph.AddEdge("3", "5", 9);
+            graph.AddEdge("4", "1", 2);
+            graph.AddEdge("4", "3", 11);
+            graph.AddEdge("4", "6", 5);
+            graph.AddEdge("6", "3", 4);
+
+            graph.Dijkstra(startNode);
 
             // (결과출력)
             // 정점: 가중치 / 이전노드

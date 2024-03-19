@@ -18,9 +18,9 @@ namespace DataStructure.Graph
                 this.EdgeList = new List<Edge>();
             }
 
-            public int CompareTo(object _object)
+            public int CompareTo(object obj)
             {
-                Node other = (Node)_object;
+                Node other = (Node)obj;
                 return this.Key.CompareTo(other.Key);
             }
         }
@@ -55,13 +55,13 @@ namespace DataStructure.Graph
 
         public void AddEdge(string from, string to, int weight = 0)
         {
-            Node fromVtx = nodes.Find(s => s.Key == from);
+            var fromVtx = nodes.Find(s => s.Key == from);
             var edge1 = new Edge(from, to, weight);
             fromVtx.EdgeList.Add(edge1);
 
             if (!directedGraph)
             {
-                var toVtx = nodes.Find(x => x.Key == to);
+                var toVtx = nodes.Find(s => s.Key == to);
                 var edge2 = new Edge(to, from, weight);
                 toVtx.EdgeList.Add(edge2);
             }
@@ -91,7 +91,7 @@ namespace DataStructure.Graph
                     // 노드의 인접간선들 체크
                     foreach (var edge in curr.EdgeList)
                     {
-                        //방문노드집합들을 향하지 않는 간선 중
+                        // 방문노드집합을 향하지 않는 간선 중
                         if (visited.FirstOrDefault(n => n.Key == edge.To) == null)
                         {
                             // 최소 가중치 간선 선택
@@ -105,7 +105,7 @@ namespace DataStructure.Graph
                 }
 
                 // MST와 방문노드집합에 추가
-                Node minNode = nodes.Single(n => n.Key == minEdge.To);
+                var minNode = nodes.Single(n => n.Key == minEdge.To);
                 visited.Add(minNode);
                 mst.Add(minEdge);
             }
@@ -122,7 +122,6 @@ namespace DataStructure.Graph
             // Dijkstra 테이블 초기화
             var totalCosts = new Dictionary<Node, int>();
             var prevNodes = new Dictionary<Node, Node>();
-
             foreach (var n in nodes)
             {
                 totalCosts.Add(n, int.MaxValue);
@@ -145,17 +144,18 @@ namespace DataStructure.Graph
 
                 // 방문노드집합의 인접 노드들에 대해
                 // (1) 새 경로 가중치를 갱신하고
-                // (2) 경로 가중치가 최소인 minNode를 선택한다
+                // (2) 경로 가중치가 최소인 minNode를 선택한다.
                 foreach (Node curr in visited)
                 {
-                    foreach (Edge edge in curr.EdgeList)
+                    foreach (var edge in curr.EdgeList)
                     {
-                        Node destNode = nodes.Single(n => n.Key == edge.To);
+                        var destNode = nodes.Single(n => n.Key == edge.To);
 
                         if (!visited.Contains(destNode))
                         {
-                            // 새 경로 가중치가 기본값보단 작으면 갱신
+                            //새 경로 가중치가 기존값보다 작으면 갱신
                             int nodeWeight = totalCosts[curr] + edge.Weight;
+
                             if (nodeWeight < totalCosts[destNode])
                             {
                                 totalCosts[destNode] = nodeWeight;
@@ -174,13 +174,13 @@ namespace DataStructure.Graph
                             }
                         }
                     }
-
                 }
 
                 // 경로 가중치가 최소인 노드를 방문노드집합에 추가
                 visited.Add(minNode);
             }
 
+            // 결과 출력
             foreach (var n in nodes)
             {
                 Console.WriteLine($"{n.Key} : {totalCosts[n]} / {prevNodes[n].Key}");

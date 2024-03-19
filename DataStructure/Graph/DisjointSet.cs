@@ -14,7 +14,7 @@ namespace DataStructure.Graph
 
         public void CreateSet(string element)
         {
-            //부모가 요소와 동일함
+            // 부모가 요소오 동일함
             ht.Add(element, element);
         }
 
@@ -22,19 +22,21 @@ namespace DataStructure.Graph
         {
             if (ht[element] == element)
             {
-                //부모가 요소와 동일하면 최상위 부모
+                // 부모가 요소와 동일하면 최상위 부모
                 return element;
             }
             else
             {
+                // 재귀호출로 최상위 부모 찾음
                 return Find(ht[element]);
             }
         }
 
         public void Union(string elem1, string elem2)
         {
-            //병합: elem1의 부모를 elem2로 지정
+            // 병합: elem1의 부모 elem2로 지정
             ht[elem1] = elem2;
         }
+
     }
 }

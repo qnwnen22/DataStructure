@@ -66,16 +66,15 @@ namespace DataStructure.Graph
                 var toParent = djset.Find(edge.To);
 
                 // 부모정점이 다르면 즉 분리집합이 다르면
-                if(fromParent != toParent)
+                if (fromParent != toParent)
                 {
                     // 분리집합 병합
                     djset.Union(fromParent, toParent);
-                    // 결과집합 추가
+                    // 결과집합에 추가
                     mst.Add(edge);
                 }
             }
 
-            // 결과집합 리턴
             return mst;
         }
     }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataStructure.Graph
+namespace DataStructure.Graph.AdjacencyMatrix
 {
-    public class Graph5
+    public class Graph
     {
         // 인접행렬 2차원배열
         private int[,] mat;
@@ -13,40 +13,43 @@ namespace DataStructure.Graph
         private int size;
         private bool digraph;
 
-        public Graph5(string[] vertexLables, bool digraph = false)
+        // 인접행렬 초기화
+        public Graph(string[] vertexLabels, bool digraph = false)
         {
-            this.vertexList = new List<string>(vertexLables);
-            this.size = this.vertexList.Count;
+            this.vertexList = new List<string>(vertexLabels);
+            this.size = vertexList.Count;
             this.mat = new int[size, size];
             this.digraph = digraph;
         }
 
+        // Edge 추가
         public void AddEdge(string from, string to, int weight = 1)
         {
-            int iFrom = vertexList.FindIndex(s => s == from);
-            int iTo = vertexList.FindIndex(s => s == to);
-            AddEdge(iFrom, iTo, weight);
+            int iFrom = vertexList.FindIndex(x => x == from);
+            int iTo = vertexList.FindIndex(x => x == to);
 
+            AddEdge(iFrom, iTo, weight);
         }
 
-        public void AddEdge(int fromIndex, int toInedx, int weight = 1)
+        private void AddEdge(int fromIndex, int toIndex, int weight)
         {
-            mat[fromIndex, toInedx] = weight;
+            mat[fromIndex, toIndex] = weight;
             if (!digraph)
             {
-                mat[toInedx, fromIndex] = weight;
+                mat[toIndex, fromIndex] = weight;
             }
         }
 
-        //Edge 제거
+        // Edge 제거
         public void RemoveEdge(string from, string to)
         {
-            int iFrom = vertexList.FindIndex(s => s == from);
-            int iTo = vertexList.FindIndex(s => s == to);
+            int iFrom = vertexList.FindIndex(x => x == from);
+            int iTo = vertexList.FindIndex(x => x == to);
+
             RemoveEdge(iFrom, iTo);
         }
 
-        public void RemoveEdge(int fromIndex, int toIndex)
+        private void RemoveEdge(int fromIndex, int toIndex)
         {
             mat[fromIndex, toIndex] = 0;
             if (!digraph)
@@ -58,10 +61,10 @@ namespace DataStructure.Graph
         internal void DebugPrintGraph()
         {
             // Matrix 상단
-            Console.WriteLine("  ");
+            Console.Write("  ");
             for (int i = 0; i < size; i++)
             {
-                Console.WriteLine($"{vertexList[i]} ");
+                Console.Write($"{vertexList[i]} ");
             }
             Console.WriteLine();
 

@@ -1,53 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataStructure.Graph
+namespace DataStructure.Graph.UsingDynamicArray
 {
-    public class Node1<T>
-    {
-        public T Data { get; set; }
-        public List<Node1<T>> Neighbors { get; private set; }
-        public List<int> Weights { get; private set; } // Optional
-
-        public Node1()
-        {
-            Neighbors = new List<Node1<T>>();
-            Weights = new List<int>();
-        }
-
-        public Node1(T data) : this()
-        {
-            this.Data = data;
-        }
-    }
-
     public class Graph<T>
     {
-        private List<Node1<T>> nodes;
+        private List<Node<T>> nodes;
         private bool directedGraph;
 
         public Graph(bool directedGraph = false)
         {
-            this.nodes = new List<Node1<T>>();
+            this.nodes = new List<Node<T>>();
             this.directedGraph = directedGraph;
         }
 
-        public Node1<T> AddVertex(T data)
+        public Node<T> AddVertex(T data)
         {
-            return AddVertex(new Node1<T>(data));
+            return AddVertex(new Node<T>(data));
         }
 
-        private Node1<T> AddVertex(Node1<T> node)
+        public Node<T> AddVertex(Node<T> node)
         {
             nodes.Add(node);
             return node;
         }
 
-        public void AddEdge(Node1<T> from, Node1<T> to, int weight = 1)
+        public void AddEdge(Node<T> from, Node<T> to, int weight = 1)
         {
             from.Neighbors.Add(to);
             from.Weights.Add(weight);
-            if (directedGraph == false)
+            if (!directedGraph)
             {
                 to.Neighbors.Add(from);
                 to.Weights.Add(weight);
@@ -56,7 +38,7 @@ namespace DataStructure.Graph
 
         internal void DebugPrintGraph()
         {
-            foreach (Node1<T> vertex in nodes)
+            foreach (var vertex in nodes)
             {
                 int cnt = vertex.Neighbors.Count;
                 for (int i = 0; i < cnt; i++)
@@ -67,13 +49,14 @@ namespace DataStructure.Graph
         }
 
 
+
         public void DFS()
         {
-            // 방문 여부를 표시하는 방문 테이블
-            var visited = new HashSet<Node1<T>>();
+            // 방문 여부를 표시하는 방문테이블
+            var visited = new HashSet<Node<T>>();
 
             // Disconnected Graph 를 위해
-            // 방문하지 않은 노드를 모두 체크
+            // 방분하지 않은 노드를 모두 체크
             foreach (var node in nodes)
             {
                 if (!visited.Contains(node))
@@ -84,7 +67,7 @@ namespace DataStructure.Graph
             }
         }
 
-        private void DFSRecursive(Node1<T> node, HashSet<Node1<T>> visited)
+        private void DFSRecursive(Node<T> node, HashSet<Node<T>> visited)
         {
             // 노드 방문
             Console.Write("{0} ", node.Data);
@@ -101,10 +84,9 @@ namespace DataStructure.Graph
             }
         }
 
-
         public void DFSIterative()
         {
-            var visited = new HashSet<Node1<T>>();
+            var visited = new HashSet<Node<T>>();
 
             // Disconnected Graph 를 위해
             // 방문하지 않은 노드들 모두 체크
@@ -117,9 +99,9 @@ namespace DataStructure.Graph
             }
         }
 
-        private void DFSUsingStack(Node1<T> node, HashSet<Node1<T>> visited)
+        private void DFSUsingStack(Node<T> node, HashSet<Node<T>> visited)
         {
-            var stack = new Stack<Node1<T>>();
+            var stack = new Stack<Node<T>>();
             stack.Push(node);
 
             while (stack.Count > 0)
@@ -127,7 +109,7 @@ namespace DataStructure.Graph
                 var vertex = stack.Pop();
                 if (!visited.Contains(vertex))
                 {
-                    Console.WriteLine("{0} ", vertex.Data);
+                    Console.Write("{0} ", vertex.Data);
                     visited.Add(vertex);
                 }
 
@@ -140,7 +122,7 @@ namespace DataStructure.Graph
                     }
                 }
 
-                // 표현(B)
+                //// 표현(B)
                 //int cnt = vertex.Neighbors.Count;
                 //for (int i = cnt - 1; i >= 0; i--)
                 //{
@@ -153,13 +135,14 @@ namespace DataStructure.Graph
             Console.WriteLine();
         }
 
+
         public void BFS()
         {
-            var visited = new HashSet<Node1<T>>();
+            var visited = new HashSet<Node<T>>();
 
             // Disconnected Graph 를 위해
-            // 방문하지 않은 노드를 모두 체크
-            foreach (Node1<T> node in nodes)
+            // 방문하지 않은 노드들 모두 체크
+            foreach (var node in nodes)
             {
                 if (!visited.Contains(node))
                 {
@@ -168,9 +151,9 @@ namespace DataStructure.Graph
             }
         }
 
-        private void BFS(Node1<T> node, HashSet<Node1<T>> visited)
+        private void BFS(Node<T> node, HashSet<Node<T>> visited)
         {
-            var q = new Queue<Node1<T>>();
+            var q = new Queue<Node<T>>();
             q.Enqueue(node);
 
             while (q.Count > 0)
@@ -194,12 +177,11 @@ namespace DataStructure.Graph
                     }
                 }
             }
-
-            // BFS 실행 결과 : 
-            // A B D E C F G X Y
         }
 
-        private void TopoSort(Node1<T> node, HashSet<Node1<T>> visited, Stack<Node1<T>> result)
+
+
+        private void TopoSort(Node<T> node, HashSet<Node<T>> visited, Stack<Node<T>> result)
         {
             foreach (var nbr in node.Neighbors)
             {
@@ -216,46 +198,23 @@ namespace DataStructure.Graph
             visited.Add(node);
         }
 
-        private void TopoSort(Node1<T> node, HashSet<Node1<T>> visited, LinkedList<Node1<T>> result)
+        public Stack<Node<T>> TopologicalSort()
         {
-            foreach (var nbr in node.Neighbors)
+            var visted = new HashSet<Node<T>>();
+            //(A)스택에 저장하는 경우
+            var result = new Stack<Node<T>>();
+            //(B) 연결리스트에 저장하는 경우       
+            //var result = new LinkedList<Node<T>>();
+            // 모든 노드에 대해        
+            // 방문하지 않은 경우 위상정렬 수행    
+            foreach (var vertex in nodes)
             {
-                if (!visited.Contains(nbr))
+                if (!visted.Contains(vertex))
                 {
-                    TopoSort(nbr, visited, result);
+                    TopoSort(vertex, visted, result);
                 }
             }
-
-            // (A) 스택에 저장하는 경우
-            // result.Push(node);
-            // (B) 연결리스트에 저장하는 경우
-            result.AddFirst(node);
-            visited.Add(node);
-        }
-
-        public Stack<Node1<T>> TopologicalSort()
-        {
-            var visited = new HashSet<Node1<T>>();
-            // (A)스택에 저장하는 경우
-            var result = new Stack<Node1<T>>();
-            // (B) 연결리스트에 저장하는 경우
-            // var result = new LinkedList<Node1<T>>();
-
-            // 모든 노드에 대해
-            // 방문하지 않은 경우 위상정렬 수행
-            foreach (Node1<T> vertex in nodes)
-            {
-                if (!visited.Contains(vertex))
-                {
-                    TopoSort(vertex, visited, result);
-                }
-            }
-
             return result;
         }
-
-
-
-       
     }
 }
