@@ -104,6 +104,7 @@
     <Compile Include="Trie\Trie.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Array\시간복잡도와 특징 및 장단점.txt" />
     <Content Include="BinarySearchTree\8.1 이진 탐색 트리 자료구조.txt" />
     <Content Include="BinarySearchTree\8.2 이진 탐색 트리 순회%28Traversal%29.txt" />
     <Content Include="BinarySearchTree\8.3 이진 탐색 트리의 구현.txt" />
@@ -128,17 +129,21 @@
     <Content Include="LinkedList\3.4 원형 연결 리스트.txt" />
     <Content Include="LinkedList\3.5 원형 단일 연결 리스트의 변형.txt" />
     <Content Include="LinkedList\3.6 NET의 연결 리스트.txt" />
+    <Content Include="LinkedList\시간복잡도.txt" />
     <Content Include="Queue\4.1 Queue 자료구조.txt" />
     <Content Include="Queue\4.2 배열로 구현한 Queue.txt" />
     <Content Include="Queue\4.3 연결 리스트로 구현한 Queue.txt" />
     <Content Include="Queue\4.4 .NET Queue클래스.txt" />
+    <Content Include="Queue\시간복잡도와 특징 및 장단점.txt" />
     <Content Include="Stack\5.1 Stack 자료구조.txt" />
     <Content Include="Stack\5.2 배열로 구현한 Stack.txt" />
     <Content Include="Stack\5.3 연결리스트로 구현한 Stack.txt" />
     <Content Include="Stack\5.4 .NET의 Stack 클래스.txt" />
+    <Content Include="Stack\시간복잡도와 특징 및 장단점.txt" />
     <Content Include="Tree\6.1 Tree 자료구조.txt" />
     <Content Include="Tree\6.2 Tree 구조의 표현.txt" />
     <Content Include="Tree\6.3 .NET의 Tree클래스.txt" />
+    <Content Include="Tree\시간복잡도와 특징 및 장단점.txt" />
     <Content Include="Trie\10.1 Trie 자료구조.txt" />
     <Content Include="Trie\10.3 Trie로 Auto Complete 기능 구현.txt" />
     <None Include="App.config" />
