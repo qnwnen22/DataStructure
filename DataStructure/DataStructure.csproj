@@ -78,6 +78,7 @@
     <Compile Include="LinkedList\DoublyLinkedList.cs" />
     <Compile Include="LinkedList\DoublyLinkedListNode.cs" />
     <Compile Include="LinkedList\Example.cs" />
+    <Compile Include="LinkedList\MyLinkedList.cs" />
     <Compile Include="LinkedList\SinglyLinkedListNode.cs" />
     <Compile Include="LinkedList\SinglyLinkedList.cs" />
     <Compile Include="Program.cs" />
